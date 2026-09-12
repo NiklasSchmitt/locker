@@ -9,6 +9,27 @@ back of the phone locks the screen — without triggering `DevicePolicyManager`
 "administrator locked" behavior, so fingerprint/face unlock keep working
 normally afterwards.
 
+## Setup
+
+1. **Install the app.** It has no launcher UI of its own — starting it just
+   locks the screen immediately.
+2. **Enable the accessibility service** (only needed once): Settings →
+   Accessibility → *Downloaded apps* (wording varies by Android
+   version/OEM, e.g. "Installed apps") → *Sperren* → turn it on. If you skip
+   this, the app does it for you: launching it once opens this exact screen
+   automatically (see `LockActivity`).
+3. **Set it as the Quick Tap target** (Pixel only): Settings → System →
+   Gestures → *Quick Tap to start actions* → turn on *Use Quick Tap* → choose
+   *Open app* → tap the gear/settings icon next to it → select *Sperren*.
+   ([Google's instructions](https://support.google.com/pixelphone/answer/7443425),
+   available on Pixel 4a and newer.)
+4. Double-tap the back of the phone → the screen locks.
+
+Non-Pixel phones don't have Quick Tap, but `LockActivity` is a perfectly
+normal launchable activity — it can be bound to any other gesture/shortcut
+mechanism instead (e.g. a button-mapping app, Tasker, or a long-press
+launcher shortcut).
+
 ## How it works
 
 - `LockActivity` has no UI (`Theme.NoDisplay`). It's launched, immediately
