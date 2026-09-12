@@ -1,0 +1,27 @@
+Sperren ist eine winzige App ohne eigene Oberfläche, die genau eine Aufgabe
+hat: den Bildschirm sofort sperren, sobald sie gestartet wird.
+
+Gedacht ist sie als Ziel-App für die "Schnelles Antippen"-Geste von Pixel-
+Telefonen (zweimal auf die Rückseite tippen -> "App öffnen"): Ein doppeltes
+Antippen der Rückseite sperrt damit den Bildschirm, ganz ohne Umweg über
+Einstellungen oder Schnelleinstellungen.
+
+Im Gegensatz zur Sperrfunktion einer Geräteverwaltungs-App (Device Admin)
+markiert Sperren die Sperre nicht als "vom Administrator gesperrt" -
+Fingerabdruck- und Gesichtsentsperrung funktionieren danach also weiterhin
+ganz normal.
+
+Wie es funktioniert:
+
+* Die App hat keine sichtbare Oberfläche. Beim Start sperrt sie sofort den
+  Bildschirm und beendet sich selbst wieder.
+* Dafür wird ein Bedienungshilfen-Dienst benötigt, da nur er die dafür
+  nötige Systemfunktion aufrufen darf. Der Dienst liest keine
+  Bildschirminhalte, zeigt keine Overlays an und reagiert auf nichts außer
+  dem Start der App selbst.
+* Beim ersten Start wird man einmalig gebeten, den Dienst in den
+  Bedienungshilfen-Einstellungen zu aktivieren.
+
+Es gibt keinerlei Internetzugriff, keine Werbung, keine Analyse-/Tracking-
+Funktionen und außer der Android-Plattform selbst keine weiteren
+Abhängigkeiten.

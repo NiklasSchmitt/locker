@@ -1,0 +1,1 @@
+Instantly locks the screen, made for Pixel's Quick Tap gesture.

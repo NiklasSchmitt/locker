@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Original padlock glyph (own artwork, not traced from any icon set): a shackle (two legs +
+  a semicircular arc) over a rounded body with a keyhole dot, drawn as a single 24x24 path
+  and centered in the standard 108dp adaptive-icon canvas at 2x scale (48dp glyph box).
+  Fixed white glyph on the black background. No day/night variant on purpose.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:translateX="30"
+        android:translateY="30"
+        android:scaleX="2"
+        android:scaleY="2">
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M11.05,15.5 a0.95,0.95 0 1,0 1.9,0 a0.95,0.95 0 1,0 -1.9,0 M6.5,11 h11 a2.5,2.5 0 0,1 2.5,2.5 v4 a2.5,2.5 0 0,1 -2.5,2.5 h-11 a2.5,2.5 0 0,1 -2.5,-2.5 v-4 a2.5,2.5 0 0,1 2.5,-2.5 z M7.5,11 V8 a4.5,4.5 0 0,1 9,0 v3" />
+    </group>
+</vector>

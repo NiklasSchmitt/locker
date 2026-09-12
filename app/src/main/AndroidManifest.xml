@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Locker">
+
+        <!--
+          No UI on purpose: locks the screen the instant it's started, then finishes
+          itself. Exists purely so it can be picked as the target for Pixel's "Quick Tap"
+          (double-tap the back of the phone) -> "Open app" action.
+        -->
+        <activity
+            android:name=".LockActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:excludeFromRecents="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Exists only so LockActivity can call performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN),
+          which regular apps aren't allowed to do. No overlay, no gesture handling - Quick Tap
+          itself already detects the tap gesture in hardware.
+        -->
+        <service
+            android:name=".LockAccessibilityService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            tools:ignore="AccessibilityPolicy">
+            <!-- Legitimate self-service use: the user enables this by hand in Settings, and it
+                 only ever locks the screen - it doesn't read window content, bypass consent, or
+                 change any setting. -->
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+Locker is a tiny app with no user interface of its own that does exactly one
+thing: lock the screen the instant it's launched.
+
+It's meant to be set as the target app for Pixel's "Quick Tap" gesture
+(double-tap the back of the phone -> "Open app"): a double tap on the back
+of the phone then locks the screen right away, no detour through settings
+or quick settings needed.
+
+Unlike the lock triggered by a device-admin app, Locker does not mark the
+lock as "administrator locked" - fingerprint and face unlock keep working
+normally afterwards.
+
+How it works:
+
+* The app has no visible UI. On launch it immediately locks the screen and
+  closes itself again.
+* Locking the screen requires an accessibility service, since only such a
+  service is allowed to call the underlying system action. The service does
+  not read screen content, does not draw any overlay, and does not react to
+  anything besides the app being launched.
+* On first launch, you're asked once to enable the service in the
+  accessibility settings.
+
+There is no internet access, no ads, no analytics/tracking, and no
+dependencies beyond the Android platform itself.

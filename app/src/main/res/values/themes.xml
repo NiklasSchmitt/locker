@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Never actually seen: LockActivity overrides this with android:Theme.NoDisplay, and the
+      app has no other UI. Just needs to resolve to something valid for the manifest.
+      (Theme.DeviceDefault.DayNight needs API 29; DeviceDefault alone works back to minSdk 24
+      and the day/night switching wouldn't matter here anyway since nothing is ever shown.)
+    -->
+    <style name="Theme.Locker" parent="android:Theme.DeviceDefault" />
+</resources>

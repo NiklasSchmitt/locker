@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sperren</string>
+    <string name="accessibility_service_description">Wird nur benötigt, damit diese App den Bildschirm sperren kann, ohne danach eine PIN/Muster-Eingabe zu erzwingen.</string>
+    <string name="accessibility_required">Bitte \"Sperren\" in den Bedienungshilfen einmalig aktivieren.</string>
+</resources>
