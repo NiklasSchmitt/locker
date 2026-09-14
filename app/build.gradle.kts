@@ -5,11 +5,6 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
-// Single source of truth for both defaultConfig and the release APK's output filename below,
-// so the two can never drift apart (the F-Droid Binaries: URL depends on both matching).
-val appVersionCode = 1
-val appVersionName = "1.0.1"
-
 // Release signing: reads from `keystore.properties` (git-ignored, for local builds) or from
 // SIGNING_* environment variables (for the release GitHub Action). Neither is present for a
 // plain checkout - e.g. F-Droid building from source - so the release build type simply stays
@@ -39,8 +34,11 @@ android {
         // pretending to support it.
         minSdk = 28
         targetSdk = 37
-        versionCode = appVersionCode
-        versionName = appVersionName
+        // Keep these as literals, not a variable/constant - fdroidserver's checkupdates
+        // finds the version by regex-matching "versionCode =" / "versionName =" directly
+        // against this file, and doesn't resolve Kotlin identifiers.
+        versionCode = 1
+        versionName = "1.0.1"
     }
 
     signingConfigs {
@@ -77,7 +75,7 @@ androidComponents {
     onVariants(selector().withBuildType("release")) { variant ->
         variant.outputs.forEach { output ->
             if (output is VariantOutputImpl) {
-                output.outputFileName.set("Locker-$appVersionName.apk")
+                output.outputFileName.set("Locker-${android.defaultConfig.versionName}.apk")
             }
         }
     }
