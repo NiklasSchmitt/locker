@@ -35,8 +35,8 @@ android {
         minSdk = 28
         targetSdk = 37
         // Keep these as literals, not a variable/constant - fdroidserver's checkupdates
-        // finds the version by regex-matching "versionCode =" / "versionName =" directly
-        // against this file, and doesn't resolve Kotlin identifiers.
+        // finds the version by regex-matching this assignment directly against this file,
+        // and doesn't resolve Kotlin identifiers.
         versionCode = 1
         versionName = "1.0.1"
     }
