@@ -41,6 +41,15 @@ android {
         versionName = "1.0.1"
     }
 
+    // AGP embeds an encrypted "dependency metadata" blob (for the Play Console) in the
+    // signing block of every release APK. apksigcopier - which F-Droid uses to verify that
+    // its from-source build reproduces our released binary - doesn't understand that block
+    // and fails with "Found extra signing block 'Dependency metadata'", so switch it off.
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
     signingConfigs {
         if (releaseStoreFile != null) {
             create("release") {
